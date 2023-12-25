@@ -2,6 +2,7 @@ const express = require("express");
 const { Sequelize } = require("sequelize");
 const app = express();
 const bookRoutes = require("./routes/bookRoutes");
+const cors = require("cors");
 
 // Replace with your actual config details
 const config = {
@@ -24,7 +25,7 @@ const sequelize = new Sequelize(
     port: config.port,
   }
 );
-
+app.use(cors());
 app.use("/api", bookRoutes);
 
 // Import models after initializing Sequelize
